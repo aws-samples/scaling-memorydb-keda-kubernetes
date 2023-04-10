@@ -1,0 +1,18 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: redis-scaledobject
+spec:
+  scaleTargetRef:
+    name: redis-consumer
+  maxReplicaCount: 5
+  triggers:
+  - type: redis-cluster
+    metadata:
+      addressesFromEnv: MEMORYDB_ENDPOINT
+      usernameFromEnv: MEMORYDB_USERNAME
+      passwordFromEnv: MEMORYDB_PASSWORD
+      listName: mylist
+      listLength: "50"
+      enableTLS: "true"
+      

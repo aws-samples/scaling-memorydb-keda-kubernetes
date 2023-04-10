@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-consumer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis-consumer
+  template:
+    metadata:
+      labels:
+        app: redis-consumer
+    spec:
+      containers:
+        - name: redis-consumer
+          image: <enter AWS account ID>.dkr.ecr.<enter AWS region>.amazonaws.com/redis-consumer-app:latest
+          imagePullPolicy: Always
+          env:
+            - name: MEMORYDB_ENDPOINT
+              value: <enter MemoryDB endpoint>
+            - name: MEMORYDB_USERNAME
+              value: <enter MemoryDB username>
+            - name: MEMORYDB_PASSWORD
+              value: <enter MemoryDB password>
+            - name: LIST_NAME
+              value: <enter name of Redis List>
+            - name: INSTANCE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
