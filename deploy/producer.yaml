@@ -12,6 +12,9 @@ spec:
       labels:
         app: redis-producer
     spec:
+      securityContext:
+        runAsNonRoot: true
+        allowPrivilegeEscalation: false
       containers:
         - name: redis-consumer
           image: <enter AWS account ID>.dkr.ecr.<enter AWS region>.amazonaws.com/redis-producer-app:latest

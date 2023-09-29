@@ -15,4 +15,3 @@ spec:
       listName: mylist
       listLength: "50"
       enableTLS: "true"
-      

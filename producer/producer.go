@@ -5,13 +5,12 @@ import (
 	"crypto/tls"
 	"fmt"
 	"log"
-	"math/rand"
+	"crypto/rand"
 	"os"
 	"os/signal"
 	"strconv"
 	"syscall"
 	"time"
-
 	"github.com/go-redis/redis/v8"
 )
 
