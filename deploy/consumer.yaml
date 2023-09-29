@@ -14,7 +14,6 @@ spec:
     spec:
       securityContext:
         runAsNonRoot: true
-        allowPrivilegeEscalation: false
       containers:
         - name: redis-consumer
           image: <enter AWS account ID>.dkr.ecr.<enter AWS region>.amazonaws.com/redis-consumer-app:latest
@@ -32,3 +31,5 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.name
+          securityContext:
+            allowPrivilegeEscalation: false

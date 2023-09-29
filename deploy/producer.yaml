@@ -14,7 +14,6 @@ spec:
     spec:
       securityContext:
         runAsNonRoot: true
-        allowPrivilegeEscalation: false
       containers:
         - name: redis-consumer
           image: <enter AWS account ID>.dkr.ecr.<enter AWS region>.amazonaws.com/redis-producer-app:latest
@@ -28,3 +27,5 @@ spec:
               value: <enter MemoryDB password>
             - name: LIST_NAME
               value: <enter name of Redis List>
+          securityContext:
+            allowPrivilegeEscalation: false
